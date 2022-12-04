@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link th:href = "@{/css/style.css}" rel="stylesheet"/>
+    
+    <title>Calculadora</title>
+</head>
+<body>
+    <h1>Calculadora IMC</h1>
+    <form onsubmit ="return validateForm()" name="myForma" method="post">
+        <table th:unless="${permit}">
+            <tr>
+                <td>Peso (En Kg):</td>
+                <td><input type="text" class="text" id="peso" name="peso" max= 300 required/></td>
+            </tr>
+            <tr>
+                <td>Altura (En Centimetros) :</td>
+                <td><input type="text" class="text" id="altura" name="altura" max=220 required/></td>
+            </tr>
+            <tr class="botonera">
+                <td><input class ="button" type="submit" value="Calcular"/></td>
+                <td><input class ="button" type="reset" value="Reset"/></td>
+            </tr>
+        </table>
+        <div >
+            <div class="resultados"><p><span th:if="${permit}">Tu IMC es de: </span><span id="imc" th:text="${imc}"></span></p></div>
+            <div class="resultados"><p th:text="${estado}"></p><p id="estadoTipo" th:text="${estadoTipo}" style="display:none"></p></div>
+            <input class ="button" th:if="${permit}" type="submit" value="OK"/>
+        </div>    
+    </form>
+    <script th:src="@{/js/script.js}"></script>
+</body>
+</html>
