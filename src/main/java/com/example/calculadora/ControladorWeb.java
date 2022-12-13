@@ -46,10 +46,8 @@ public class ControladorWeb {
             model.addAttribute("imc", imc);
             model.addAttribute("estado", "Te encuentras en un estado de: " + estado);
         }
-        else{
+        else if(peso == 0 || h ==0){
             model.addAttribute("permit", false);
-            model.addAttribute("imc", "Calculadora de IMC ");
-            model.addAttribute("estado", "Ingrese peso y altura para poder averiguar su Indice de Masa Corporal");
         }
         return "calculadora";
 

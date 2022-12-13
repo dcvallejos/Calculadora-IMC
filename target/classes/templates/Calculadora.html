@@ -26,8 +26,15 @@
             </tr>
         </table>
         <div >
-            <div class="resultados"><p><span th:if="${permit}">Tu IMC es de: </span><span id="imc" th:text="${imc}"></span></p></div>
-            <div class="resultados"><p th:text="${estado}"></p><p id="estadoTipo" th:text="${estadoTipo}" style="display:none"></p></div>
+
+            <div class="resultados"><p>
+                <span th:unless="${permit}">Calculadora de IMC</span>
+                <span th:if="${permit}">Tu IMC es de: </span><span id="imc" th:text="${imc}"></span>
+            </p></div>
+            <div class="resultados">
+                <span th:unless="${permit}">Ingrese peso y altura para poder averiguar su Indice de Masa Corpora</span>
+                <p th:text="${estado}"></p><p id="estadoTipo" th:text="${estadoTipo}" style="display:none"></p>
+            </div>
             <input class ="button" th:if="${permit}" type="submit" value="OK"/>
         </div>    
     </form>
